@@ -4,7 +4,7 @@ import torchvision.transforms as T
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
-import rasterio as rio
+#import rasterio as rio
 import os
 import random
 from torchvision import transforms
@@ -46,6 +46,8 @@ def transform_train_with_labels(image, label):
 def save_to_tif(tensor, file_path):
     Image.fromarray((tensor.numpy()*255).astype(np.uint8)).save(file_path, format='TIFF')
 
+
+
 class PatchesDataset(torch.utils.data.Dataset):
     def __init__(self, data_dict_rgb, data_dict_gt, dataset_name):
         assert len(data_dict_rgb) == len(data_dict_gt)
@@ -58,7 +60,7 @@ class PatchesDataset(torch.utils.data.Dataset):
         self.means = None
         self.stds = None
 
-    def get_tensor_image(self, image_path):
+    '''def get_tensor_image(self, image_path):
         tensor = []
         for i in range(0, len(image_path)):
             image = Image.open(image_path[i])
@@ -73,7 +75,35 @@ class PatchesDataset(torch.utils.data.Dataset):
             tensor_image = tensor_image.unsqueeze(-1)
 
         tensor_image = tensor_image.permute(0, 3, 1, 2)
+        return tensor_image'''
+    
+    def get_tensor_image(self, image_path):
+        tensor = []
+        # Iterate through each image path
+        for path in image_path:
+            # Check if it's a .pt file (a saved tensor)
+            if path.endswith('.pt'):
+                # Load tensor from the .pt file
+                img_tensor = torch.load(path)
+            else:
+                # Otherwise, treat it as an image
+                image = Image.open(path)
+                img_np = np.array(image)
+                img_tensor = torch.tensor(img_np)
+        
+            tensor.append(img_tensor)
+    
+        tensor_image = torch.stack(tensor)  # Stack tensors to form a batch
+
+        # For ground truth, ensure it has the correct single-channel shape
+        file_name = os.path.basename(image_path[0])
+        if 'gt' in file_name:
+            tensor_image = tensor_image.unsqueeze(-1)  # Add channel dimension for ground truth
+
+        tensor_image = tensor_image.permute(0, 3, 1, 2)  # Reorder to (B, C, H, W)
         return tensor_image
+
+
 
     def __len__(self):
         return len(self.data_dict_rgb)
