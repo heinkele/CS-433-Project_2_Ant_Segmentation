@@ -94,6 +94,13 @@
     "print(f\"Original training set size: {x_train.shape}\")\n",
     "print(f\"Augmented training set size: {augmented_x_train.shape}\")"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
