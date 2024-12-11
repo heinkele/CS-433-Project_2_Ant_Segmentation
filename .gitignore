@@ -1,3 +1,14 @@
-"C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\original"
-"C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\Nils"
-"C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\images_finales"
+# Ignore the images folder
+C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\original
+C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\Nils
+C:\Users\utilisateur\Documents\GitHub\CS-433-Project_2_Ant_Segmentation\images_finales
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore all .log files
+*.log
+
+# Ignore temporary or backup files
+*.tmp
+*.bak
