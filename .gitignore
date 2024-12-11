@@ -2,6 +2,7 @@
 original/
 Nils/
 images_finales/
+multiclass_model/
 
 # Ignore Python cache files
 __pycache__/
