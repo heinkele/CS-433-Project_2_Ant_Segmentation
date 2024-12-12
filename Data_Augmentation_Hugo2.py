@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageEnhance
 
 def augment_image_and_mask(image, mask):
     """
@@ -35,7 +35,9 @@ def augment_image_and_mask(image, mask):
     # Random Brightness Adjustment
     if random.random() > 0.5:
         factor = random.uniform(0.8, 1.2)  # Adjust brightness by 80%-120%
-        img = ImageOps.autocontrast(img).enhance(factor)
+        img = ImageOps.autocontrast(img)
+        enhancer = ImageEnhance.Sharpness(img)
+        img = enhancer.enhance(factor)
 
     # Convert back to NumPy arrays
     augmented_image = np.array(img) / 255.0  # Normalize to [0, 1]
