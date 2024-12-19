@@ -55,7 +55,7 @@ The dataset consists of 190 manually annotated grayscale masks paired with the a
 3. Data augmentation techniques:
    - Random rotation (`90°`, `180°`, `270°`)
    - Horizontal and vertical flipping
-   - Brightness adjustment (80%-120%)
+   - Gaussian Blur (intensity sigma between 0.1 and 0.5, on 50% of the images)
 
 ## U-Net Model
 
