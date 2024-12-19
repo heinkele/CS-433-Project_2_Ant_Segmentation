@@ -26,7 +26,7 @@ Clone this repository, in order to have run the different code
 git clone https://github.com/heinkele/CS-433-Project_2_Ant_Segmentation
 ```
 
-## Project Structure
+## Project Structure and Usage
 - **`ants_dataset.py`**:
   Contains the `AntsDataset` class for loading and preprocessing ant images and masks. Supports augmentation techniques like rotation, flipping, and brightness adjustment.
   
@@ -42,6 +42,7 @@ git clone https://github.com/heinkele/CS-433-Project_2_Ant_Segmentation
 - **`ML_Project2-4.pdf`**:
   The project report detailing the methodology, U-Net architecture, results, and ethical assessment.
 
+Run the script main.ipynb to preprocess the data, implement/train the models and get the final predictions. Pay attention to adapt the different pathway in the part : "Creation of the directories and data splitting", "Model Training - function save_model()" and "Save the trained model for the best epoch",  depending on where the data are store or when you want to store the result.
 ---
 
 ## Dataset
