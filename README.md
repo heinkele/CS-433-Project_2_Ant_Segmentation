@@ -111,6 +111,12 @@ These metrics are computed during both validation and testing phases to ensure t
 
 ---
 
+## Conclusion
+
+This project successfully demonstrates the application of the U-Net architecture for segmenting ant body parts from RGB images. By leveraging robust preprocessing, data augmentation, and carefully chosen evaluation metrics, the model achieves high accuracy and generalization. 
+
+
+
 ### Requirements
 - Python 3.8+
 - PyTorch 1.10+
